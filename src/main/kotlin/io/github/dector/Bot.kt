@@ -15,7 +15,7 @@ fun main(vararg args: String) {
     }
 
     val event = MeetupAPI("LessWrong-Kyiv")
-            .pastEvents()
+            .upcomingEvents()
             .firstOrNull()
 
     if (event == null) {

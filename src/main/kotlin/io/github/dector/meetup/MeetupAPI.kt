@@ -18,13 +18,21 @@ class MeetupAPI(val groupName: String) {
     private val meetupEventsAPI = retrofit.create(
             MeetupEventsAPI::class.java)
 
+    fun upcomingEvents(): List<Event> {
+        return getEvents(status = "upcoming", fields = "plain_text_description")
+    }
+
     fun pastEvents(): List<Event> {
-        "Requesting past events".log()
+        return getEvents(status = "past", fields = "plain_text_description")
+    }
+
+    fun getEvents(status: String = "", fields: String = ""): List<Event> {
+        "Requesting $status events".log()
 
         val response = meetupEventsAPI.getEvents(
                 groupName = groupName,
-                status = "past",
-                fields = "plain_text_description").execute()
+                status = status,
+                fields = fields).execute()
 
         if (response.isSuccessful) {
             "Received response: ${response.body()}".log()
