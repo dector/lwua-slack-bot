@@ -8,10 +8,10 @@ import io.github.dector.slack.rest.SlackWebHookAPI
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class SlackAPI(webhookUrl: String, val debug: Boolean = false) {
+class SlackAPI(private val webHookUrl: String, val debug: Boolean = false) {
 
     private val retrofit = Retrofit.Builder()
-            .baseUrl(webhookUrl)
+            .baseUrl("https://hooks.slack.com/")
             .addConverterFactory(createConverterFactory())
             .build()
 
@@ -23,7 +23,10 @@ class SlackAPI(webhookUrl: String, val debug: Boolean = false) {
 
         if (debug) return
 
-        val response = webhookAPI.sendMessage(message)
+        val response = webhookAPI
+                .sendMessage(
+                        webHookUrl = webHookUrl,
+                        message = message)
                 .execute()
 
         if (response.isSuccessful) {

@@ -25,9 +25,3 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-moshi:2.1.0'
 }
-
-if (file('secure.gradle').exists()) {
-    apply from: file('secure.gradle')
-} else {
-    throw new FileNotFoundException("Configuration file `secure.gradle` missed. Checkout `secure.gradle.example` for reference")
-}

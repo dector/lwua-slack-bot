@@ -7,12 +7,13 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.Url
 
 interface SlackWebHookAPI {
 
-    @POST()
+    @POST
     @Headers("Content-Type: application/json")
-    fun sendMessage(@Body message: Message): Call<Void>
+    fun sendMessage(@Url webHookUrl: String, @Body message: Message): Call<Void>
 }
 
 data class Message(

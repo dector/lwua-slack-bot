@@ -1,0 +1,10 @@
+####################################################################################
+#####                                                                          #####
+##### Copy this file to secure.props and setup your private configuration #####
+#####                                                                          #####
+#####                               DON'T COMMIT IT                            #####
+#####                                                                          #####
+####################################################################################
+
+# Slack WebHook url. Read how to get it here: https://api.slack.com/incoming-webhooks
+SLACK_WEBHOOK_URL = Your_WebHook_Url_Here

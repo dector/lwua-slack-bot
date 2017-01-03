@@ -23,7 +23,7 @@ fun main(vararg args: String) {
         return
     }
 
-    SlackAPI(webhookUrl = getWebhookUrl(), debug = false)
+    SlackAPI(webHookUrl = getWebhookUrl(), debug = false)
             .sendMessage(buildSlackMessage(event))
 }
 
@@ -36,7 +36,7 @@ fun checkPreconditions(): Boolean {
     return true
 }
 
-fun getWebhookUrl(): String = System.getProperty("SLACK_WEBHOOK_URL", "") ?: ""
+fun getWebhookUrl(): String = BuildProps.default.webhookUrl
 
 fun buildSlackMessage(event: Event) = Message(
         emojiIcon = ":meetup:",
