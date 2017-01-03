@@ -1,0 +1,33 @@
+group 'io.github.dector'
+version '1.0'
+
+buildscript {
+    ext.kotlin_version = '1.0.5-2'
+
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // REST API client
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-moshi:2.1.0'
+}
+
+if (file('secure.gradle').exists()) {
+    apply from: file('secure.gradle')
+} else {
+    throw new FileNotFoundException("Configuration file `secure.gradle` missed. Checkout `secure.gradle.example` for reference")
+}
