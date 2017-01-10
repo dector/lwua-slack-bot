@@ -50,7 +50,7 @@ fun buildSlackMessage(event: Event) = Message(
                         text = event.plainTextDescription,
                         footer = "<https://www.google.com.ua/maps/place/${event.venue.lat}%20${event.venue.lon}|${event.venue.name}>",
                         footerIcon = "http://i.imgur.com/p4hmlZh.png",
-                        imageUrl = "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x200&markers=color:yellowred|${event.venue.lat},%20${event.venue.lon}",
+                        imageUrl = "https://maps.googleapis.com/maps/api/staticmap?zoom=17&size=400x200&markers=color:yellowred|${event.venue.lat},${event.venue.lon}",
                         timestamp = event.time.toEpochSecond(ZoneOffset.UTC).toString()
                 )
         )
